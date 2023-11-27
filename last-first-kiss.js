@@ -8,5 +8,5 @@ function last(str) {
 }
 
 function kiss(str) {
-    return [first(str), last(str)];
+    return [last(str), first(str)];
 }
