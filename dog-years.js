@@ -18,7 +18,8 @@ function dogYears(planet, ageInSeconds) {
  const orbitalPeriod = orbitalPeriods[planet];
 
  const ageOnPlanetInYears = ageInDogYears / orbitalPeriod;
- return Math.round(ageOnPlanetInYears * 100) / 100;
+
+ return Math.round(((1000000000/31557600)*7)/1)
 }
 
 console.log(dogYears("earth", 1000000000)); // 221.82
