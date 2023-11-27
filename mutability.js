@@ -10,7 +10,7 @@ const clone1 = Object.freeze ({
     country: Object.freeze('FR'),
   });
 
-  const samePerson = person ={
+  const samePerson ={
     name: 'Rick',
     age: 78,
     country: 'FR',
