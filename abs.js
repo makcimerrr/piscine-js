@@ -3,7 +3,8 @@ function isPositive (number){
 }
 
 function abs(number){
-    return Math.abs(number)
+    var abs = number * number;
+    return Math.sqrt(abs)
 }
 
 console.log(isPositive(5))
