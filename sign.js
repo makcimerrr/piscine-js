@@ -15,7 +15,7 @@ function sameSign(number1, number2){
 
     if (bool > 0){
         return true
-    }else if (bool === 0) {
+    }else if (bool === 0 && number1 === 0 && number2 === 0) {
         return true
     }else {
         return false
