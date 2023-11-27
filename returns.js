@@ -2,6 +2,6 @@ function id (arg){
     return arg
 }
 
-function getLenght (str){
-    return str.lenght
+function getLength (str){
+    return str.length
 }
