@@ -1,6 +1,6 @@
 // Define the first function
 function first(str) {
-    return str.charAt(0);
+    return str[0];
 }
 
 // Define the last function
