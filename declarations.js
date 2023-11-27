@@ -17,18 +17,3 @@ const nested = Object.freeze({
         bool: true,
     }),
 });
-
-// Testing if the constants are truly constant
-// Uncommenting the next line should result in an error
-// arr.push(5);
-
-// Uncommenting the next line should result in an error
-// obj.num = 7;
-
-// Uncommenting the next line should result in an error
-// nested.obj.str = "Hi";
-
-console.log(escapeStr);
-console.log(arr);
-console.log(obj);
-console.log(nested);
