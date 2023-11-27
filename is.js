@@ -1,7 +1,7 @@
 const is = {}
 
 is.num = function(value) {
- return typeof value === 'number' && !isNaN(value)
+ return typeof value === 'number'
 }
 
 is.nan = function(value) {
@@ -48,4 +48,7 @@ console.log(is.num(5))
 // output: true
 
 console.log(is.num('ciao'))
-// output: false
+
+console.log(is.truthy(1))
+
+console.log(is.falsy(1))
