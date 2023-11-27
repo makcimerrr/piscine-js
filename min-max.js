@@ -17,5 +17,5 @@ function min(number1, number2){
         return number1
     }
 }
-console.log(max(4,5))
+console.log(max(-13,-222))
 console.log(min(4,5))

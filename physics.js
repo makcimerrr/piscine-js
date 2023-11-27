@@ -28,4 +28,4 @@ function getAcceleration(obj) {
     d: 10
    });
    
-   console.log(acceleration); // Output: 18s
+   console.log(acceleration);
