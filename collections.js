@@ -1,90 +1,65 @@
-function arrToSet (value){
-    if (Array.isArray(value) === true) {
-        const set = new Set(value);
-    }else {
-        return "impossible"
+// Function to convert Array to Set
+function arrToSet(arr) {
+    return new Set(arr);
+}
+
+// Function to convert Array to string
+function arrToStr(arr) {
+    return arr.join(",");
+}
+
+// Function to convert Set to Array
+function setToArr(set) {
+    return [...set];
+}
+
+// Function to convert Set to string
+function setToStr(set) {
+    return [...set].join(",");
+}
+
+// Function to convert string to Array
+function strToArr(str) {
+    return str.split(",");
+}
+
+// Function to convert string to Set
+function strToSet(str) {
+    return new Set(str.split(","));
+}
+
+// Function to convert Map to Object
+function mapToObj(map) {
+    let obj = {};
+    for (let [k, v] of map) {
+        obj[k] = v;
     }
+    return obj;
 }
 
-function arrToStr(value){
-    if (Array.isArray(value) === true) {
-        const str = new String(value);
-    }else {
-        return "impossible"
+// Function to convert Object to Array
+function objToArr(obj) {
+    return Object.entries(obj).map(([k, v]) => [k, v]);
+}
+
+// Function to convert Object to Map
+function objToMap(obj) {
+    let map = new Map();
+    for (let key in obj) {
+        map.set(key, obj[key]);
     }
+    return map;
 }
 
-function setToArr(value){
-   if (typeof value === 'object' === true){
-    const arr = new Array(value)
-   }else{
-    return "impossible"
-   }
-}
-function setToStr(value){
-    if (typeof value === 'object' === true){
-        const arr = new String(value)
-       }else{
-        return "impossible"
-       }
+// Function to convert Array to Object
+function arrToObj(arr) {
+    return arr.reduce((obj, [k, v]) => ((obj[k] = v), obj), {});
 }
 
-function strToArr(value){
-    if (typeof value === 'string' === true || value instanceof String){
-        const str = new Array(value)
-       }else{
-        return "impossible"
-    }
+// Function to convert string to Object
+function strToObj(str) {
+    return JSON.parse(str);
 }
-
-function strToSet(value){
-    if (typeof value === 'string' === true || value instanceof String){
-        const str = new Set(value)
-       }else{
-        return "impossible"
-    }
-}
-
-function mapToObj(value){
-    if (typeof value === 'object' === true){
-        const map = new Map(value)
-       }else{
-        return "impossible"
-    }
-}
-
-function objToArr(value){
-    if (typeof value === 'object' === true){
-        const arr = new Array(value)
-       }else{
-        return "impossible"
-    }
-}
-
-function objToMap(value){
-    if (typeof value === 'object' === true){
-        const map = new Map(value)
-       }else{
-        return "impossible"
-    }
-}
-
-function arrToObj(value){
-    if (Array.isArray(value) === true){
-        const obj = new Object(value)
-       }else{
-        return "impossible"
-    }
-}
-
-function strToObj(value){
-    if (typeof value === 'string' === true || value instanceof String){
-        const str = new Object(value)
-       }else{
-        return "impossible"
-    }
-}
-
 function superTypeOf(obj) {
     if (obj instanceof Map) {
         return "Map";
