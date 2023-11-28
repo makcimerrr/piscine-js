@@ -58,7 +58,7 @@ function arrToObj(arr) {
 
 // Function to convert string to Object
 function strToObj(str) {
-    return JSON.parse(str);
+    return {...str};
 }
 function superTypeOf(obj) {
     if (obj instanceof Map) {
