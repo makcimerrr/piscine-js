@@ -5,7 +5,7 @@ function arrToSet(arr) {
 
 // Function to convert Array to string
 function arrToStr(arr) {
-    return arr.join(",");
+    return new String(arr);
 }
 
 // Function to convert Set to Array
