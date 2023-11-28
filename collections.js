@@ -39,7 +39,7 @@ function mapToObj(map) {
 
 // Function to convert Object to Array
 function objToArr(obj) {
-    return Object.keys(obj);
+    return Object.values(obj);
 }
 
 // Function to convert Object to Map
