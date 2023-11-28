@@ -10,12 +10,12 @@ function arrToStr(arr) {
 
 // Function to convert Set to Array
 function setToArr(set) {
-    return new Array(set);
+    return [...set];
 }
 
 // Function to convert Set to string
 function setToStr(set) {
-    return new String(set);
+    return [...set].join("");
 }
 
 // Function to convert string to Array
@@ -25,7 +25,7 @@ function strToArr(str) {
 
 // Function to convert string to Set
 function strToSet(str) {
-    return new Set(str);
+    return new Set(str.split(","));
 }
 
 // Function to convert Map to Object
