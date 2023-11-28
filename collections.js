@@ -10,7 +10,7 @@ function arrToStr(arr) {
 
 // Function to convert Set to Array
 function setToArr(set) {
-    return [...set];
+    return new Array(set);
 }
 
 // Function to convert Set to string
