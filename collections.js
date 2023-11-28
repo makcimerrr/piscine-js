@@ -53,7 +53,7 @@ function objToMap(obj) {
 
 // Function to convert Array to Object
 function arrToObj(arr) {
-    return arr.reduce((obj, [k, v]) => ((obj[k] = v), obj), {});
+    return Object.fromEntries(arr);
 }
 
 // Function to convert string to Object
