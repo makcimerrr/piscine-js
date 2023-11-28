@@ -96,10 +96,12 @@ function superTypeOf(obj) {
     } else {
         if (typeof obj === 'string') {
             return "String";
-        }else{
+        }else if (typeof obj === 'number'){
+            return "Number";
+        }else {
             return typeof obj;
         }
     }
 }
 
-console.log(superTypeOf(''))
+console.log(superTypeOf(NaN))
