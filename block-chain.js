@@ -17,13 +17,7 @@ function blockChain(data, prev = genesis) {
    
     return block;
    }
-
-const hashCode = str =>
-(
-[...str].reduce((h, c) => (h = (h << 5) - h + c.charCodeAt(0)) & h, 0) >>> 0
-).toString(36)
-
-
+   
 const first = blockChain({ a: 1 })
 console.log(first.index) //           -> 1  
 console.log(first.data) //            -> { a: 1 }
