@@ -20,7 +20,7 @@ function setToStr(set) {
 
 // Function to convert string to Array
 function strToArr(str) {
-    return new Array(str);
+    return Array.from(str);
 }
 
 // Function to convert string to Set
