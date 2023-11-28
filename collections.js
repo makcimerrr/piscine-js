@@ -94,6 +94,12 @@ function superTypeOf(obj) {
     } else if (obj instanceof Symbol) {
         return "Symbol";
     } else {
-        return typeof obj;
+        if (typeof obj === 'string') {
+            return "String";
+        }else{
+            return typeof obj;
+        }
     }
 }
+
+console.log(superTypeOf(''))
