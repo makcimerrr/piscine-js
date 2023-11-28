@@ -5,7 +5,7 @@ function arrToSet(arr) {
 
 // Function to convert Array to string
 function arrToStr(arr) {
-    return arr.join("");
+    return new String(arr);
 }
 
 // Function to convert Set to Array
@@ -15,7 +15,7 @@ function setToArr(set) {
 
 // Function to convert Set to string
 function setToStr(set) {
-    return [...set].join("");
+    return new String(set);
 }
 
 // Function to convert string to Array
@@ -25,7 +25,7 @@ function strToArr(str) {
 
 // Function to convert string to Set
 function strToSet(str) {
-    return new Set(str.split(","));
+    return new Set(str);
 }
 
 // Function to convert Map to Object
