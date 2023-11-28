@@ -71,8 +71,6 @@ function superTypeOf(obj) {
         return "WeakSet";
     } else if (obj instanceof Array) {
         return "Array";
-    } else if (obj instanceof Object) {
-        return "Object";
     } else if (obj instanceof Function) {
         return "Function";
     } else if (obj instanceof Promise) {
@@ -93,7 +91,9 @@ function superTypeOf(obj) {
         return "BigInt";
     } else if (obj instanceof Symbol) {
         return "Symbol";
-    } else {
+    } else if (obj instanceof Object) {
+        return "Object";
+    }else {
         if (typeof obj === 'string') {
             return "String";
         }else if (typeof obj === 'number'){
@@ -106,4 +106,4 @@ function superTypeOf(obj) {
     }
 }
 
-console.log(superTypeOf(null))
+console.log(superTypeOf(superTypeOf))
