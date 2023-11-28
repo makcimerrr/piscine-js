@@ -1,4 +1,4 @@
-genesis = { index: 0, hash: '0' }
+const genesis = { index: 0, hash: '0' }
 
 function blockChain(data, prev = genesis) {
     const index = prev.index + 1;
@@ -17,7 +17,7 @@ function blockChain(data, prev = genesis) {
    
     return block;
    }
-   
+
 const first = blockChain({ a: 1 })
 console.log(first.index) //           -> 1  
 console.log(first.data) //            -> { a: 1 }
