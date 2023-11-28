@@ -25,7 +25,7 @@ function strToArr(str) {
 
 // Function to convert string to Set
 function strToSet(str) {
-    return new Set(str.split(","));
+    return new Set(Array.from(str));
 }
 
 // Function to convert Map to Object
