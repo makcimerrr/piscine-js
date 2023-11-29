@@ -23,15 +23,20 @@ function divide (a,b){
         counter += 1
       }
       if (sign === 1){
-        return result
+        return counter
       }else {
-        return -(result)
+        return -(counter)
       }
 }
 
 function modulo(a, b) {
-    var result = a - b * Math.floor(a / b);
-    return (result < 0) ? result + b : result;
+    var result = multiply((a-b),(Math.floor(divide(a,b))))
+    if (result < 0) {
+        return result + b
+    }else {
+        return result
+    }
+    /* return (result < 0) ? result + b : result; */
 }
 
 console.log(multiply(-2,3))
