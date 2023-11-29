@@ -22,7 +22,11 @@ function divide (a,b){
         a = a - b
         counter += 1
       }
-      return counter * sign;
+      if (sign === 1){
+        return result
+      }else {
+        return -(result)
+      }
 }
 
 function modulo(a, b) {
