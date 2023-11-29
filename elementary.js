@@ -14,14 +14,17 @@ function multiply (a,b){
 }
 
 function divide (a,b){
+    // Algorithme d'Euclide
     let counter = 0;
+    let result = 0;
     let sign = (a > 0 && b > 0) || (a < 0 && b < 0) ? 1 : -1;
     a = Math.abs(a);
     b = Math.abs(b);
-    while(a === b) {
-        a = a - b
-        counter += 1
-      }
+    while (a >= b) {
+        a -= b;
+        counter += 1;
+    }
+
       if (sign === 1){
         return counter
       }else {
@@ -29,10 +32,12 @@ function divide (a,b){
       }
 }
 
+
+
 function modulo(a, b) {
         let result = 0
         result = a - multiply(divide(a,b),b) //formule
-        
+
     if (result < 0) {
         return result + b
     }else {
@@ -42,5 +47,5 @@ function modulo(a, b) {
 }
 
 console.log(multiply(-2,3))
-console.log(divide(34,78))
+console.log(divide(78,34))
 console.log(modulo(5,8))
