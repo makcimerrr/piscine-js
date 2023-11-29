@@ -31,19 +31,10 @@ function divide (a,b){
         return -(counter)
       }
 }
-
-
-
 function modulo(a, b) {
         let result = 0
-        result = a - multiply(divide(a,b),b) //formule
-
-    if (result < 0) {
-        return result + b
-    }else {
+        result = a - multiply(Math.floor(divide(a,b)),b) //formule
         return result
-    }
-    /* return (result < 0) ? result + b : result; */
 }
 
 console.log(multiply(-2,3))
