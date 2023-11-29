@@ -1,47 +1,75 @@
-
-
-function indexOf(arr, value){
-    if (value >= arr.length){
+function indexOf(arr, value,index){
+    if (value === undefined){
         return -1
     }
 
-    let i = 0
-
-    if (value !== undefined){
+    if (index !== undefined){
+        let i = index
         while(i < arr.length){
-            arr[value]
+            if (arr[i] === value){
+                return i - index
+            }
             i++
         }
-        return arr[value]
-    }else{
-        return arr[0]
+        return -1
+    }else {
+        let i = 0
+        while(i < arr.length){
+            if (arr[i] === value){
+                return i
+            }
+            i++
+        }
+        return -1
     }
 }
 
-function lastIndexOf(arr, value){
-    if (value > arr.length){
+function lastIndexOf(arr, value,index){
+    if (value === undefined){
         return -1
     }
 
-    let i = 0
-
-    if (value !== undefined){
-        while(i > arr.length){
-            arr[value]
+    if (index !== undefined){
+        let i = arr.length
+        while(i > 0){
+            if (arr[i] === value){
+                return i - index
+            }
             i--
         }
-        return arr[arr.length - value]
-    }else{
-        return arr[arr.length - 1]
+        return -1
+    }else {
+    let i = arr.length
+        while(i > 0){
+            if (arr[i] === value){
+                return i
+            }
+            i--
+        }
+        return -1
     }
 }
+
 
 function includes(arr,value){
-    if (value > arr.length){
-        return false 
-    }else {
-        return true
+    if (value !== undefined){
+        false
     }
+    let i = 0
+        while(i < arr.length){
+            if (arr[i] === value){
+                return true
+            }
+            i++
+        }
+        return false
 }
 
-console.log(lastIndexOf([1, 2, 3, 4, 5, 4, 3, 2, 1],2))
+
+console.log(includes([7, 8, 9, 5, 6, 4], 4))
+console.log(lastIndexOf([7, 8, 9, 5, 8, 8, 8],8, 0))
+console.log(indexOf([7, 8, 9, 5, 6, 4],9))
+console.log(indexOf([7, 8, 9, 5, 6, 4],4))
+console.log(indexOf([7, 8, 9, 5, 6, 4],3))
+console.log(indexOf([7, 8, 9, 5, 6, 4],6,2))
+console.log(indexOf([7, 8, 9, 5, 6, 4]))
