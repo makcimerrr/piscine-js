@@ -6,7 +6,11 @@ function multiply (a,b){
     for (let i = 0; i < a; i++) {
         result += b;
       }
-      return result * sign;
+      if (sign === 1){
+        return result
+      }else {
+        return -(result)
+      }
 }
 
 function divide (a,b){
