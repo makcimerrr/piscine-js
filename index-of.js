@@ -24,29 +24,26 @@ function indexOf(arr, value,index){
     }
 }
 
-function lastIndexOf(arr, value,index){
+function lastIndexOf(arr, value, index) {
     if (value === undefined){
         return -1
     }
 
     if (index !== undefined){
-        let i = arr.length
-        while(i > 0){
-            if (arr[i] === value){
-                return i
+        for (let i = index; i >= 0; i--) {
+            if (arr[i] === value) {
+                return i;
             }
-            i--
         }
         return -1
     }else {
-    let i = arr.length
-        while(i > 0){
-            if (arr[i] === value){
-                return i
+        index = arr.length - 1
+        for (let i = index; i >= 0; i--) {
+            if (arr[i] === value) {
+                return i;
             }
-            i--
         }
-        return -1
+        return -1;
     }
 }
 
@@ -65,11 +62,5 @@ function includes(arr,value){
         return false
 }
 
-
-console.log(includes([7, 8, 9, 5, 6, 4], 4))
 console.log(lastIndexOf(['t', 0, 0, 't'], 't', 2))
-console.log(lastIndexOf([0, 0, 't', 't'], 't', 3))
-console.log(indexOf([7, 8, 9, 5, 6, 4],4))
-console.log(indexOf([7, 8, 9, 5, 6, 4],3))
-console.log(indexOf([7, 8, 9, 5, 6, 4],6,2))
-console.log(indexOf([7, 8, 9, 5, 6, 4]))
+console.log(lastIndexOf(['t', 0, 0, 't'], 't'))
