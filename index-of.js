@@ -33,7 +33,7 @@ function lastIndexOf(arr, value,index){
         let i = arr.length
         while(i > 0){
             if (arr[i] === value){
-                return i - index - 1
+                return i
             }
             i--
         }
@@ -68,7 +68,7 @@ function includes(arr,value){
 
 console.log(includes([7, 8, 9, 5, 6, 4], 4))
 console.log(lastIndexOf(['t', 0, 0, 't'], 't', 2))
-console.log(indexOf(['t', 0, 0, 't'], 't', 1))
+console.log(lastIndexOf([0, 0, 't', 't'], 't', 3))
 console.log(indexOf([7, 8, 9, 5, 6, 4],4))
 console.log(indexOf([7, 8, 9, 5, 6, 4],3))
 console.log(indexOf([7, 8, 9, 5, 6, 4],6,2))
