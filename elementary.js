@@ -14,11 +14,11 @@ function multiply (a,b){
 }
 
 function divide (a,b){
-    let counter = 1;
+    let counter = 0;
     let sign = (a > 0 && b > 0) || (a < 0 && b < 0) ? 1 : -1;
     a = Math.abs(a);
     b = Math.abs(b);
-    while(a > b) {
+    while(a === b) {
         a = a - b
         counter += 1
       }
@@ -30,7 +30,9 @@ function divide (a,b){
 }
 
 function modulo(a, b) {
-    var result = multiply((a-b),(Math.floor(divide(a,b))))
+        let result = 0
+        result = a - multiply(divide(a,b),b) //formule
+        
     if (result < 0) {
         return result + b
     }else {
@@ -40,5 +42,5 @@ function modulo(a, b) {
 }
 
 console.log(multiply(-2,3))
-console.log(divide(10,2))
+console.log(divide(34,78))
 console.log(modulo(5,8))
