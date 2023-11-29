@@ -38,5 +38,5 @@ function modulo(a, b) {
 }
 
 console.log(multiply(-2,3))
-console.log(divide(78,34))
+console.log(divide(0,1))
 console.log(modulo((-123),(22)))
