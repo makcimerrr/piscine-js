@@ -52,7 +52,7 @@ function keepFirstLast(str){
     let result1 = ""
     let result2 = ""
 
-    if (str.length > 2){
+    if (str.length > 3){
         for (let i = 0; i < 2; i++){
             result1 = result1 + str[i]
         }
@@ -65,5 +65,4 @@ function keepFirstLast(str){
     }
 }
 
-
-console.log(keepFirstLast('af'))
+console.log(keepFirstLast('afd'))
