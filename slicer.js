@@ -9,7 +9,7 @@ function slice(arr, startIndex, opt){
                     result = result + arr[i]
                 }
                 if (Array.isArray(arr)){
-                    return result.split("")
+                    return result.split("").map(Number)
                 }else if (typeof arr == 'string'){
                     return result
                 }
@@ -18,7 +18,7 @@ function slice(arr, startIndex, opt){
                     result = result + arr[i]
                 }
                 if (Array.isArray(arr)){
-                    return result.split("")
+                    return result.split("").map(Number)
                 }else if (typeof arr == 'string'){
                     return result
                 }
@@ -29,7 +29,7 @@ function slice(arr, startIndex, opt){
                     result = result + arr[i]
                 }
                 if (Array.isArray(arr)){
-                    return result.split("")
+                    return result.split("").map(Number)
                 }else if (typeof arr == 'string'){
                     return result
                 }
@@ -38,7 +38,7 @@ function slice(arr, startIndex, opt){
                     result = result + arr[i]
                 }
                 if (Array.isArray(arr)){
-                    return result.split("")
+                    return result.split("").map(Number)
                 }else if (typeof arr == 'string'){
                     return result
                 }
@@ -47,7 +47,7 @@ function slice(arr, startIndex, opt){
                     result = result + arr[i]
                 }
                 if (Array.isArray(arr)){
-                    return result.split("")
+                    return result.split("").map(Number)
                 }else if (typeof arr == 'string'){
                     return result
                 }
