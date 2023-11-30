@@ -26,6 +26,11 @@ function slice(arr, startIndex, opt){
                     result = result + arr[i]
                 }
                 return result
+            }else if (startIndex < 0 && opt < 0) {
+                for ( let i= arr.length + startIndex; i < arr.length + opt; i++){
+                    result = result + arr[i]
+                }
+                return result
             }
         }
     }
@@ -33,4 +38,4 @@ function slice(arr, startIndex, opt){
 
 
 console.log(slice(['ant', 'bison', 'camel', 'duck', 'elephant'], 2, -1))
-console.log(slice('abcdef', 0, 2))
+console.log(slice('abcdef', -3, -1))
