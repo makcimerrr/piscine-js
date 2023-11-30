@@ -3,7 +3,7 @@ function split(inputString, delimiter) {
     const result = [];
     let startIndex = 0;
 
-    while (startIndex < inputString.length) {
+    while (startIndex <= inputString.length) {
         const delimiterIndex = inputString.indexOf(delimiter, startIndex);
 
         if (delimiterIndex === -1) {
@@ -23,6 +23,7 @@ function split(inputString, delimiter) {
 }
 
 
+
 // Custom join function
 function join(inputArray, separator) {
     let result = '';
@@ -38,4 +39,4 @@ function join(inputArray, separator) {
 
     return result;
 }
-console.log(split('a b c', ' '))
+console.log(split('ee,ff,g,', ','))
