@@ -1,39 +1,30 @@
 // Custom split function
-function split(inputString, delimiter) {
+function split(str, value) {
     const result = [];
-    let startIndex = 0;
+    let start = 0;
 
-    while (startIndex <= inputString.length) {
-        const delimiterIndex = inputString.indexOf(delimiter, startIndex);
-
-        if (delimiterIndex === -1) {
-            // Pas de délimiteur trouvé, ajoute le reste de la chaîne
-            result.push(inputString.slice(startIndex));
+    while (start <= str.length) {
+        const valueIndex = str.indexOf(value, start);
+        if (valueIndex === -1) {
+         
+            result.push(str.slice(start));
             break;
         }
-
-        // Ajoute la sous-chaîne entre startIndex et delimiterIndex
-        result.push(inputString.slice(startIndex, delimiterIndex));
-
-        // Met à jour le startIndex pour la prochaine itération
-        startIndex = delimiterIndex + delimiter.length;
+        result.push(str.slice(start, valueIndex));
+        start = valueIndex + value.length;
     }
 
     return result;
 }
 
-
-
-// Custom join function
-function join(inputArray, separator) {
+function join(arr, value) {
     let result = '';
 
-    for (let i = 0; i < inputArray.length; i++) {
-        result += inputArray[i];
+    for (let i = 0; i < arr.length; i++) {
+        result += arr[i];
 
-        // Add the separator for all elements except the last one
-        if (i < inputArray.length - 1) {
-            result += separator;
+        if (i < arr.length - 1) {
+            result += value;
         }
     }
 
