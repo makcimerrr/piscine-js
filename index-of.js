@@ -63,4 +63,4 @@ function includes(arr,value){
 }
 
 console.log(lastIndexOf(['t', 0, 0, 't'], 't', 2))
-console.log(lastIndexOf(['t', 0, 0, 't'], 't'))
+console.log(includes([0, 0, 't', 't'], 't'))
