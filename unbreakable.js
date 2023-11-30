@@ -3,15 +3,25 @@ function split(inputString, delimiter) {
     const result = [];
     let startIndex = 0;
 
-    for (let i = 0; i <= inputString.length; i++) {
-        if (inputString.slice(i, i + delimiter.length) === delimiter) {
-            result.push(inputString.slice(startIndex, i));
-            startIndex = i + delimiter.length;
+    while (startIndex < inputString.length) {
+        const delimiterIndex = inputString.indexOf(delimiter, startIndex);
+
+        if (delimiterIndex === -1) {
+            // Pas de délimiteur trouvé, ajoute le reste de la chaîne
+            result.push(inputString.slice(startIndex));
+            break;
         }
+
+        // Ajoute la sous-chaîne entre startIndex et delimiterIndex
+        result.push(inputString.slice(startIndex, delimiterIndex));
+
+        // Met à jour le startIndex pour la prochaine itération
+        startIndex = delimiterIndex + delimiter.length;
     }
 
     return result;
 }
+
 
 // Custom join function
 function join(inputArray, separator) {
@@ -28,4 +38,4 @@ function join(inputArray, separator) {
 
     return result;
 }
-console.log(split('The quick brown fox jumps over the lazy dog.', 'o'))
+console.log(split('a b c', ' '))
