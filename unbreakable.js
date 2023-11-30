@@ -17,6 +17,13 @@ function split(str, value) {
     // Ajouter la partie restante de la chaîne à final
     final.push(result);
 
+    // Si la chaîne cible est constituée uniquement de l'opérateur, ajouter des chaînes vides à final
+    if (str === value.repeat(Math.floor(str.length / value.length))) {
+        for (let i = 0; i < Math.floor(str.length / value.length); i++) {
+            final.push("");
+        }
+    }
+
     return final;
 }
 
@@ -32,6 +39,6 @@ function join(arr, value) {
     return result;
 }
 
-console.log(split('The quick brown fox jumps over the lazy dog.'));
+console.log(split('rrrr', 'rr'));
 console.log(split('The quick brown fox jumps over the lazy dog.', 'quick'));
 console.log(join(['Fire', 'Air', 'Water'], '-'))
