@@ -4,7 +4,7 @@ function reverse(arr){
         result = result + arr[i]
     }
 
-    return result.split("").map(Number)
+    return result
 }
 
-console.log(reverse([1, 2, 3]))
+console.log(reverse([1, "eq", 3, "ctx"]))
