@@ -1,44 +1,31 @@
-function split(str, value) {
-    let result = "";
-    let final = [];
+// Custom split function
+function split(inputString, delimiter) {
+    const result = [];
+    let startIndex = 0;
 
-    for (let i = 0; i < str.length; i++) {
-        if (str.startsWith(value, i)) {
-            if (result !== "") {
-                final.push(result);
-                result = "";
-            }
-            i += value.length - 1;
-        } else {
-            result += str[i];
+    for (let i = 0; i <= inputString.length; i++) {
+        if (inputString.slice(i, i + delimiter.length) === delimiter) {
+            result.push(inputString.slice(startIndex, i));
+            startIndex = i + delimiter.length;
         }
     }
 
-    // Ajouter la partie restante de la chaîne à final
-    final.push(result);
-
-    // Si la chaîne commence ou se termine par l'opérateur et n'est pas entièrement constituée de l'opérateur,
-    // ajouter des chaînes vides à final
-    if (str.startsWith(value) && str !== value.repeat(Math.floor(str.length / value.length))) {
-        final.unshift("");
-    }
-
-    return final;
-}
-
-function join(arr, value) {
-    let result = "";
-
-    for (let i = 0; i < arr.length; i++) {
-        result += arr[i];
-        if (i < arr.length - 1) {
-            result += value;
-        }
-    }
     return result;
 }
 
-console.log(split('rrrr', 'rr'));
-console.log(split('rrirr', 'rr'));
-console.log(split('The quick brown fox jumps over the lazy dog.', 'quick'));
-console.log(join(['Fire', 'Air', 'Water'], '-'))
+// Custom join function
+function join(inputArray, separator) {
+    let result = '';
+
+    for (let i = 0; i < inputArray.length; i++) {
+        result += inputArray[i];
+
+        // Add the separator for all elements except the last one
+        if (i < inputArray.length - 1) {
+            result += separator;
+        }
+    }
+
+    return result;
+}
+console.log(split('The quick brown fox jumps over the lazy dog.', 'o'))
