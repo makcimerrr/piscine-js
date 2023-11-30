@@ -17,3 +17,4 @@ function reverse(arr){
 
 
 console.log(reverse([1, "eq", 3, "ctx"]))
+console.log(reverse('abcdef'))
