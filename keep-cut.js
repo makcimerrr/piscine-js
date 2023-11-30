@@ -37,10 +37,14 @@ function keepFirst(str){
 
 function keepLast(str){
     let result = ""
-    for (let i = str.length - 2; i < str.length; i++){
-        result = result + str[i]
+    if (str.length >= 2){
+        for (let i = str.length - 2; i < str.length; i++){
+            result = result + str[i]
+        }
+        return result
+    }else {
+        return str
     }
-    return result
 }
 
 
