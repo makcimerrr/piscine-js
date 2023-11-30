@@ -24,10 +24,14 @@ function cutFirstLast(str){
 
 function keepFirst(str){
     let result = ""
-    for (let i = 0; i < 2; i++){
-        result = result + str[i]
+    if (str.length >= 2){
+        for (let i = 0; i < 2; i++){
+            result = result + str[i]
+        }
+        return result
+    }else {
+        return str
     }
-    return result
 }
 
 
@@ -54,9 +58,5 @@ function keepFirstLast(str){
     return result1 + result2
 }
 
-console.log(cutFirst('abcdef'))
-console.log(cutLast('abcdef'))
-console.log(cutFirstLast('abcdef'))
-console.log(keepFirst('abcdef'))
-console.log(keepLast('abcdef'))
-console.log(keepFirstLast('abcdef'))
+
+console.log(keepFirst('a'))
