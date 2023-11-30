@@ -4,7 +4,7 @@ function reverse(arr){
         result = result + arr[i]
     }
 
-    return result
+    return result.split("")
 }
 
 console.log(reverse([1, "eq", 3, "ctx"]))
