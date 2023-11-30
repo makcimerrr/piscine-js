@@ -52,15 +52,18 @@ function keepFirstLast(str){
     let result1 = ""
     let result2 = ""
 
-
-    for (let i = 0; i < 2; i++){
-        result1 = result1 + str[i]
+    if (str.length >= 2){
+        for (let i = 0; i < 2; i++){
+            result1 = result1 + str[i]
+        }
+        for (let i = str.length - 2; i < str.length; i++){
+            result2 = result2 + str[i]
+        }
+        return result1 + result2
+    }else {
+        return str
     }
-    for (let i = str.length - 2; i < str.length; i++){
-        result2 = result2 + str[i]
-    }
-    return result1 + result2
 }
 
 
-console.log(keepFirst('a'))
+console.log(keepFirstLast('af'))
