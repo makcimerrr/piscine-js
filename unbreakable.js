@@ -6,22 +6,21 @@ function split(str, value) {
         if (str.startsWith(value, i)) {
             if (result !== "") {
                 final.push(result);
+                result = "";
             }
-            i += value.length - 1; // Avancer l'indice en fonction de la longueur de la valeur
-            result = ""; // Réinitialiser la variable result pour la prochaine sous-chaîne
+            i += value.length - 1;
         } else {
-            result = result + str[i];
+            result += str[i];
         }
     }
 
     // Ajouter la partie restante de la chaîne à final
     final.push(result);
 
-    // Si la chaîne cible est constituée uniquement de l'opérateur, ajouter des chaînes vides à final
-    if (str === value.repeat(Math.floor(str.length / value.length))) {
-        for (let i = 0; i < Math.floor(str.length / value.length); i++) {
-            final.push("");
-        }
+    // Si la chaîne commence ou se termine par l'opérateur et n'est pas entièrement constituée de l'opérateur,
+    // ajouter des chaînes vides à final
+    if (str.startsWith(value) && str !== value.repeat(Math.floor(str.length / value.length))) {
+        final.unshift("");
     }
 
     return final;
@@ -40,5 +39,6 @@ function join(arr, value) {
 }
 
 console.log(split('rrrr', 'rr'));
+console.log(split('rrirr', 'rr'));
 console.log(split('The quick brown fox jumps over the lazy dog.', 'quick'));
 console.log(join(['Fire', 'Air', 'Water'], '-'))
