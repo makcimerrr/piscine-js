@@ -1,28 +1,30 @@
 // Custom split function
-function split(arr, value) {
+function split(inputString, delimiter) {
     const result = [];
     let startIndex = 0;
-    let valueIndex;
+    let delimiterIndex;
 
-    while ((valueIndex = arr.indexOf(value, startIndex)) !== -1) {
-        result.push(arr.slice(startIndex, valueIndex));
-        startIndex = valueIndex + value.length;
+    while ((delimiterIndex = inputString.indexOf(delimiter, startIndex)) !== -1) {
+        result.push(inputString.slice(startIndex, delimiterIndex));
+        startIndex = delimiterIndex + delimiter.length;
     }
 
     // Add the remaining part of the string
-    result.push(arr.slice(startIndex));
+    result.push(inputString.slice(startIndex));
 
     return result;
 }
 
-function join(arr, value) {
+
+function join(inputArray, separator) {
     let result = '';
 
-    for (let i = 0; i < arr.length; i++) {
-        result += arr[i];
+    for (let i = 0; i < inputArray.length; i++) {
+        result += inputArray[i];
 
-        if (i < arr.length - 1) {
-            result += value;
+        // Add the separator for all elements except the last one
+        if (i < inputArray.length - 1) {
+            result += separator;
         }
     }
 
