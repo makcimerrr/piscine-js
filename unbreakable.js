@@ -1,13 +1,16 @@
 function split(str, separator) {
     let result = [];
     let currentChunk = "";
+    let separatorLength = separator.length;
 
-    for (let char of str) {
-        if (char === separator) {
+    for (let i = 0; i < str.length; i++) {
+        // Vérifier si la sous-chaîne correspond au séparateur
+        if (str.substring(i, i + separatorLength) === separator) {
             result.push(currentChunk);
             currentChunk = "";
+            i += separatorLength - 1; // Sauter le séparateur dans la chaîne originale
         } else {
-            currentChunk += char;
+            currentChunk += str[i];
         }
     }
 
@@ -35,3 +38,4 @@ function join(arr, separator) {
 
 
 console.log(split('ee,ff,g,', ','))
+console.log(split('ggg - ddd - b', ' - '))
