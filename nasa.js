@@ -1,6 +1,6 @@
 function nasa(N) {
-    if (typeof N !== 'number' || N <= 0 || !Number.isInteger(N)) {
-      return 'Invalid input. Please provide a positive integer.';
+    if (typeof N !== 'number' || N <= 0) {
+      return 'invalide';
     }
   
     let result = '';
