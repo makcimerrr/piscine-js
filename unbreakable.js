@@ -16,15 +16,14 @@ function split(inputString, delimiter) {
 }
 
 function join(inputArray, separator) {
-    let result = '';
+    if (inputArray.length === 0) {
+        return '';
+    }
 
-    for (let i = 0; i < inputArray.length; i++) {
-        result += inputArray[i];
+    let result = inputArray[0];
 
-        // Add the separator for all elements except the last one
-        if (i < inputArray.length - 1) {
-            result += separator;
-        }
+    for (let i = 1; i < inputArray.length; i++) {
+        result += separator + inputArray[i];
     }
 
     return result;
