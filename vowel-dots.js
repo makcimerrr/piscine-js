@@ -1,6 +1,6 @@
 function vowelDots(str) {
     // Define the regular expression for vowels
-    const vowels = /[aeiouAEIOU]/g;
+    const vowels = /[aeiouAEIOU]/;
   
     // Use the regular expression to add a dot after each vowel
     let final = str.replace(vowels, '$&.');
