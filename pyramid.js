@@ -5,7 +5,7 @@ function pyramid(char, height) {
     result += " ".repeat(height - i) + char.repeat(2 * i - 1) + "\n";
   }
 
-  return result;
+  return result.slice(0, -1);
 }
 
 console.log(pyramid("#", 5));
