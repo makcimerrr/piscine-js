@@ -3,7 +3,3 @@ function letterSpaceNumber(str) {
     let array = str.match(/([a-zA-Z0-9_])\s(\d\b)/g);
     return array !== null ? array : [];
   }
-  
-  console.log(letterSpaceNumber('example 1, example 20'))
-  // output: ['e 1']
-  
