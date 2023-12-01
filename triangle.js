@@ -5,7 +5,7 @@ function triangle(char, height) {
     result += char.repeat(i) + "\n";
   }
 
-  return result;
+  return result.trim();
 }
 
 // Example usage:
