@@ -1,18 +1,16 @@
 // Custom split function
-function split(str, value) {
+function split(arr, value) {
     const result = [];
-    let start = 0;
+    let startIndex = 0;
+    let valueIndex;
 
-    while (start <= str.length) {
-        const valueIndex = str.indexOf(value, start);
-        if (valueIndex === -1) {
-         
-            result.push(str.slice(start));
-            break;
-        }
-        result.push(str.slice(start, valueIndex));
-        start = valueIndex + value.length;
+    while ((valueIndex = arr.indexOf(value, startIndex)) !== -1) {
+        result.push(arr.slice(startIndex, valueIndex));
+        startIndex = valueIndex + value.length;
     }
+
+    // Add the remaining part of the string
+    result.push(arr.slice(startIndex));
 
     return result;
 }
