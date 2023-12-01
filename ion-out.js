@@ -1,5 +1,5 @@
 function ionOut(str) {
-    const words = str.split(/\s+/); // Split the input string into words
+    const words = str.split(/\s+/g); // Split the input string into words
     const result = [];
   
     for (const word of words) {
@@ -13,6 +13,4 @@ function ionOut(str) {
     return result;
   }
 
-  const inputString = 'This is a test ionization text.';
-const result = ionOut(inputString);
-console.log(result); // Output: [ 'test', 'text.' ]
+console.log(ionOut('attention, direction')); // Output: [ 'test', 'text.' ]
