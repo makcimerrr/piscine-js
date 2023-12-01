@@ -9,6 +9,6 @@ function flat(arr) {
     }
   }
 
-  return result;
+  return result.length === 0 ? [] : [result[result.length - 1]];
 }
 console.log(flat([1, [2, [3]]]));
