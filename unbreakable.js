@@ -2,19 +2,18 @@
 function split(inputString, delimiter) {
     const result = [];
     let startIndex = 0;
-    let delimiterIndex;
+    let delimiterIndex = inputString.indexOf(delimiter, startIndex);
 
-    while ((delimiterIndex = inputString.indexOf(delimiter, startIndex)) !== -1) {
-        result.push(inputString.slice(startIndex, delimiterIndex));
+    while (delimiterIndex !== -1) {
+        result.push(inputString.substring(startIndex, delimiterIndex));
         startIndex = delimiterIndex + delimiter.length;
+        delimiterIndex = inputString.indexOf(delimiter, startIndex);
     }
 
-    // Add the remaining part of the string
-    result.push(inputString.slice(startIndex));
+    result.push(inputString.substring(startIndex));
 
     return result;
 }
-
 
 function join(inputArray, separator) {
     let result = '';
