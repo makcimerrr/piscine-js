@@ -1,31 +1,37 @@
-// Custom split function
-function split(inputString, delimiter) {
-    const result = [];
-    let startIndex = 0;
-    let delimiterIndex = inputString.indexOf(delimiter, startIndex);
+function split(str, separator) {
+    let result = [];
+    let currentChunk = "";
 
-    while (delimiterIndex !== -1) {
-        result.push(inputString.substring(startIndex, delimiterIndex));
-        startIndex = delimiterIndex + delimiter.length;
-        delimiterIndex = inputString.indexOf(delimiter, startIndex);
+    for (let char of str) {
+        if (char === separator) {
+            result.push(currentChunk);
+            currentChunk = "";
+        } else {
+            currentChunk += char;
+        }
     }
 
-    result.push(inputString.substring(startIndex));
+    // Ajouter la dernière partie après la dernière occurrence du séparateur
+    result.push(currentChunk);
 
     return result;
 }
 
-function join(inputArray, separator) {
-    if (inputArray.length === 0) {
-        return '';
-    }
+function join(arr, separator) {
+    let result = "";
 
-    let result = inputArray[0];
+    for (let i = 0; i < arr.length; i++) {
+        result += arr[i];
 
-    for (let i = 1; i < inputArray.length; i++) {
-        result += separator + inputArray[i];
+        // Ajouter le séparateur si ce n'est pas le dernier élément
+        if (i < arr.length - 1) {
+            result += separator;
+        }
     }
 
     return result;
 }
+
+
+
 console.log(split('ee,ff,g,', ','))
