@@ -11,3 +11,4 @@ function flat(arr) {
 
   return result;
 }
+console.log(flat([1, [2, [3]]]));
