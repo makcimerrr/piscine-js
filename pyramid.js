@@ -2,10 +2,15 @@ function pyramid(char, height) {
   let result = "";
 
   for (let i = 1; i <= height; i++) {
-    result += " ".repeat(height - i) + char.repeat(2 * i - 1) + "\n";
+    const spaces = " ".repeat((height - i) * char.length);
+    result += spaces + char.repeat(2 * i - 1);
+
+    if (i < height) {
+      result += "\n";
+    }
   }
 
-  return result.trimEnd();
+  return result;
 }
 
-console.log(pyramid("#", 5));
+console.log(pyramid("{}", 12));
