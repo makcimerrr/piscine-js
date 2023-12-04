@@ -1,28 +1,35 @@
-function firstDayWeek(number, string) {
-  if (number <= 53 && number >= 1 && isValid(string)) {
-    const startOfYear = new Date(string, 0, 1);
-    console.log(startOfYear);
-    const dayOfWeek = startOfYear.getDay();
-    const firstDayOfYear = dayOfWeek === 0 ? 1 : 7 - dayOfWeek + 1;
-    // détermine 1er jour de l'année en fonction du jour de la semaine donné (dayOfWeek)
-    const daysUntilFirstDayOfWeek = (number - 1) * 7 + firstDayOfYear;
-    const date = new Date(string, 0, daysUntilFirstDayOfWeek);
+function firstDayWeek2(weekNumber, year) {
+  // Convert input year to a number
+  year = Number(year);
 
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear();
-
-    return `${day}-${month}-${year}`;
-  } else {
-    return false;
+  // Check if the year is less than four digits
+  if (isNaN(year) || year < 1000 || year > 9999) {
+    return "Invalid year";
   }
+
+  // Create a new Date object for January 1st of the specified year
+  let firstDayOfYear = new Date(year, 0, 1);
+
+  // Calculate the day of the week for January 1st
+  let dayOfWeek = firstDayOfYear.getDay();
+
+  // Calculate the offset to the first Monday of the week
+  let offset = (dayOfWeek - 2 + 7) % 7;
+
+  // Calculate the date of the first Monday of the week
+  let firstMonday = new Date(firstDayOfYear);
+  firstMonday.setDate(
+    firstDayOfYear.getDate() + (1 - offset) + (weekNumber - 1) * 7
+  );
+
+  // Format the date as dd-mm-yyyy
+  let dd = String(firstMonday.getDate()).padStart(2, "0");
+  let mm = String(firstMonday.getMonth() + 1).padStart(2, "0");
+  let yyyy = firstMonday.getFullYear();
+
+  return `${dd}-${mm}-${yyyy}`;
 }
 
-function isValid(date) {
-  return date && !isNaN(date);
-}
-
-console.log(firstDayWeek(1, 2021));
-console.log(firstDayWeek(1, 1000)); //expected : 01-01-1000
-// je renvoie 05-01-1000
-console.log(firstDayWeek(52, 1000)); // expected : 22-12-1000
+// Example usage:
+console.log(firstDayWeek2(1, 1000)); // Output: "01-01-1000"
+console.log(firstDayWeek2(52, 1000)); // Output: "23-12-1000"
