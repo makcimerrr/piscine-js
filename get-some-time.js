@@ -1,4 +1,4 @@
-function firstDayWeek2(weekNumber, year) {
+function firstDayWeek(weekNumber, year) {
   // Convert input year to a number
   year = Number(year);
 
@@ -31,5 +31,5 @@ function firstDayWeek2(weekNumber, year) {
 }
 
 // Example usage:
-console.log(firstDayWeek2(1, 1000)); // Output: "01-01-1000"
-console.log(firstDayWeek2(52, 1000)); // Output: "23-12-1000"
+console.log(firstDayWeek(1, 1000)); // Output: "01-01-1000"
+console.log(firstDayWeek(52, 1000)); // Output: "23-12-1000"
