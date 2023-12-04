@@ -19,9 +19,14 @@ function firstDayWeek(weekNumber, year) {
   let dd = String(goodDate.getDate()).padStart(2, "0");
   let mm = String(goodDate.getMonth() + 1).padStart(2, "0");
   let yyyy = goodDate.getFullYear();
-  if (yyyy < 10) {
-    yyyy = "000" + yyyy;
-  }
+  yyyy =
+    yyyy < 10
+      ? "000" + yyyy
+      : yyyy < 100
+      ? "00" + yyyy
+      : yyyy < 1000
+      ? "0" + yyyy
+      : yyyy;
 
   return `${dd}-${mm}-${yyyy}`;
 }
