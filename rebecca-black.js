@@ -13,7 +13,7 @@ function isWeekend(date) {
 function isLeapYear(date) {
   let year = date.getFullYear();
   let daysInYear = 0;
-
+4
   if (year % 4 === 0) {
     // Check if the year is a leap year
     if (year % 100 === 0) {
