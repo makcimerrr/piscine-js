@@ -8,9 +8,11 @@ function dayOfTheYear(date) {
       : year < 1000
       ? "0" + yyyy
       : year;
-  const dateRef = new Date(year, 1, -29);
+  const dateRef = new Date(`${year}-01-01`);
   const dateActuelle = date;
   const diff = dateActuelle - dateRef;
   const result = Math.floor(diff / 86400000);
   return result + 1;
 }
+
+console.log(dayOfTheYear(new Date("0001-01-01")));
