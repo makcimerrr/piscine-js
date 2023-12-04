@@ -3,7 +3,7 @@ function firstDayWeek(number, string) {
     const startOfYear = new Date(string, 0, 1);
     console.log(startOfYear);
     const dayOfWeek = startOfYear.getDay();
-    const firstDayOfYear = dayOfWeek === 0 ? 1 : 7 - dayOfWeek - 3;
+    const firstDayOfYear = dayOfWeek === 0 ? 1 : 7 - dayOfWeek + 1;
     // détermine 1er jour de l'année en fonction du jour de la semaine donné (dayOfWeek)
     const daysUntilFirstDayOfWeek = (number - 1) * 7 + firstDayOfYear;
     const date = new Date(string, 0, daysUntilFirstDayOfWeek);
@@ -25,3 +25,4 @@ function isValid(date) {
 console.log(firstDayWeek(1, 2021));
 console.log(firstDayWeek(1, 1000)); //expected : 01-01-1000
 // je renvoie 05-01-1000
+console.log(firstDayWeek(52, 1000)); // expected : 22-12-1000
