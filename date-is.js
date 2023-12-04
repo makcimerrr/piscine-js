@@ -23,7 +23,7 @@ function isFuture(date) {
   return false;
 }
 
-function isFuture(date) {
+function isPast(date) {
   if (isValid(date)) {
     return date < new Date();
   }
