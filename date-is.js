@@ -1,5 +1,5 @@
 function isValid(date) {
-  return Date.now(date) > 0;
+  return date && !isNaN(date);
 }
 
 function isAfter(date1, date2) {
@@ -30,5 +30,4 @@ function isPast(date) {
   return false;
 }
 
-console.log(isValid(Date.now));
-console.log(isValid(new Date()));
+console.log(isValid(Date.now()));
