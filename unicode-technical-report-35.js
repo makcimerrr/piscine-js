@@ -39,8 +39,8 @@ function format(date, formatString) {
         ? Math.abs(date.getFullYear())
         : date.getFullYear(),
     yyyy: getFullYearString(date.getFullYear()),
-    G: "AD",
-    GGGG: "Anno Domini",
+    G: date.getFullYear() >= 1 ? "AD" : "BC",
+    GGGG: date.getFullYear() >= 1 ? "Anno Domini" : "Before Christ",
     M: date.getMonth() + 1,
     MM: padZero(date.getMonth() + 1, 2),
     MMM: months[date.getMonth()],
@@ -66,10 +66,11 @@ function format(date, formatString) {
 }
 
 //EX
-/*const d = new Date("7 January 1985, 3:08:19");
+const d = new Date("7 January 1985, 3:08:19");
 console.log(format(d, "HH(mm)ss [dd] <MMM>")); // -> '03(08)19 [07] <Jan>'
 console.log(format(d, "M"));
 
 const eclipse = new Date(-585, 4, 28);
 console.log(format(eclipse, "yyyy"));
-console.log(format(eclipse, "y"));*/
+console.log(format(eclipse, "y"));
+console.log(format(eclipse, "yyyy G"));
