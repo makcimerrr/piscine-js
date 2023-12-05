@@ -34,7 +34,9 @@ function reduceRight(array, callback) {
 }
 
 const adder2 = (a, b) => a + b;
+const concatenate2 = (a = "", b) => a.concat(b);
 console.log(fold([1, 2, 3], adder2, 2));
 console.log(foldRight([1, 2, 3], adder2, 2));
 console.log(reduce([1, 2, 3], adder2));
 console.log(reduceRight([1, 2, 3], adder2));
+console.log(reduceRight(["examplesimple a is This", "-> "], concatenate2));
