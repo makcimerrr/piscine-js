@@ -7,10 +7,10 @@ function map(array, callback) {
   return resultArray;
 }
 
-function flatMap(array, callback) {
+function customFlatMap(arr, callback) {
   const resultArray = [];
-  for (let i = 0; i < array.length; i++) {
-    const result = callback(array[i], i, array);
+  for (let i = 0; i < arr.length; i++) {
+    const result = callback(arr[i], i, arr);
     resultArray.push(...result);
   }
   return resultArray;
