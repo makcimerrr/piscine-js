@@ -57,11 +57,14 @@ function tempForecasts(array) {
   return array.map((array) => {
     //gère les températures
     const temperature = parseInt(array.temperature.match(/\d+/)[0]); //regex pour les chiffres (digit)
-    const temperatureCelsius = Math.floor((temperature - 32) / 1.8);
+    const temperatureCelsius = Math.round((temperature - 32) / 1.8);
 
     //gère les villes
     const state = array.state;
-    const stateUpper = state.charAt(0).toUpperCase() + state.slice(1);
+    const stateUpper = state
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
 
     const format = `${temperatureCelsius}°Celsius in ${array.city}, ${stateUpper}`;
 
