@@ -15,3 +15,9 @@ function flatMap(arr, callback) {
   }
   return resultArray;
 }
+
+const arr1 = [1, 2, 1];
+
+const result = flatMap(arr1, (num) => (num === 2 ? [2, 2] : 1));
+
+console.log(result);
