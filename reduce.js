@@ -23,27 +23,23 @@ function reduce(array, callback) {
   return accumulator;
 }
 
-function reduceRight(array, callback, initialAccumulator) {
-  if (array.length < 1) {
+function reduceRight(arr, func) {
+  if (arr.length < 1) {
     throw new Error("Array must have at least one element");
   }
-  let accumulator =
-    initialAccumulator !== undefined
-      ? initialAccumulator
-      : array[array.length - 1];
-  const startIndex =
-    initialAccumulator !== undefined ? array.length - 1 : array.length - 2;
 
-  for (let i = startIndex; i >= 0; i--) {
-    accumulator = callback(accumulator, array[i]);
+  let accumulator = arr[arr.length - 1];
+
+  for (let i = arr.length - 2; i >= 0; i--) {
+    accumulator = func(accumulator, arr[i]);
   }
 
   return accumulator;
 }
+
 const adder2 = (a, b) => a + b;
 const concatenate2 = (a = "", b) => a.concat(b);
 console.log(fold([1, 2, 3], adder2, 2));
 console.log(foldRight([1, 2, 3], adder2, 2));
 console.log(reduce([1, 2, 3], adder2));
 console.log(reduceRight([1, 2, 3], adder2));
-console.log(reduceRight("examplesimple a is This", concatenate2, "-> "));
