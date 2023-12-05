@@ -55,23 +55,69 @@ console.log(
 
 function tempForecasts(array) {
   return array.map((array) => {
+    //gère les températures
     const temperature = parseInt(array.temperature.match(/\d+/)[0]); //regex pour les chiffres (digit)
-
     const temperatureCelsius = Math.floor((temperature - 32) / 1.8);
 
-    const format = `${temperatureCelsius}°Celsius in ${array.city}, ${array.state}`;
+    //gère les villes
+    const state = array.state;
+    const stateUpper = state.charAt(0).toUpperCase() + state.slice(1);
+
+    const format = `${temperatureCelsius}°Celsius in ${array.city}, ${stateUpper}`;
 
     return format;
   });
 }
 
-console.log(
-  tempForecasts([
-    {
-      city: "Pasadena",
-      temperature: " 101 °F",
-      state: "California",
-      region: "West",
-    },
-  ])
-);
+const states = [
+  {
+    city: "Los Angeles",
+    temperature: "101 °F",
+    state: "california",
+    region: "West",
+  },
+  {
+    city: "San Francisco",
+    temperature: "84 °F",
+    state: "california",
+    region: "West",
+  },
+  {
+    city: "Miami",
+    temperature: " 112 °F",
+    state: "Florida",
+    region: "South",
+  },
+  {
+    city: "New York City",
+    temperature: " 0 °F",
+    state: "new york",
+    region: "North East",
+  },
+  { city: "Juneau", temperature: " 21° F", state: "Alaska", region: "West" },
+  {
+    city: "Boston",
+    temperature: "45 °F",
+    state: "massachussetts",
+    region: "North East",
+  },
+  {
+    city: "Jackson",
+    temperature: " 70°F  ",
+    state: "mississippi",
+    region: "South",
+  },
+  {
+    city: "Utqiagvik",
+    temperature: " -1 °F",
+    state: "Alaska",
+    region: "West",
+  },
+  {
+    city: "Albuquerque",
+    temperature: " 95 °F",
+    state: "new mexico",
+    region: "West",
+  },
+];
+console.log(tempForecasts(states));
