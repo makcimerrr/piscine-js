@@ -57,7 +57,7 @@ function tempForecasts(array) {
   return array.map((array) => {
     //gère les températures
     const temperature = parseInt(array.temperature.match(/\d+/)[0]); //regex pour les chiffres (digit)
-    const temperatureCelsius = Math.round((temperature - 32) / 1.8);
+    const temperatureCelsius = Math.floor((temperature - 32) / 1.8);
 
     //gère les villes
     const state = array.state;
