@@ -6,8 +6,8 @@ function fold(array, callback, accumulator) {
 }
 
 function foldRight(array, callback, accumulator) {
-  for (let i = 0; i < array.length; i++) {
-    accumulator = callback(array[i], accumulator);
+  for (let i = array.length - 1; i >= 0; i--) {
+    accumulator = callback(accumulator, array[i]);
   }
   return accumulator;
 }
@@ -43,3 +43,4 @@ console.log(fold([1, 2, 3], adder2, 2));
 console.log(foldRight([1, 2, 3], adder2, 2));
 console.log(reduce([1, 2, 3], adder2));
 console.log(reduceRight([1, 2, 3], adder2));
+console.log(foldRight("examplesimple a is This ", concatenate2, "-> "));
