@@ -28,7 +28,16 @@ function format(date, formatString) {
     "December",
   ];
 
-  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
   const padZero = (num, length) => {
     const numString = String(num);
@@ -61,8 +70,8 @@ function format(date, formatString) {
     MMMM: monthNames[date.getMonth()],
     d: date.getDate(),
     dd: padZero(date.getDate(), 2),
-    E: daysOfWeek[date.getDay()],
-    EEEE: daysOfWeek[date.getDay()],
+    E: dayNamesShort[date.getDay()],
+    EEEE: dayNames[date.getDay()],
     h: date.getHours() % 12 || 12,
     hh: padZero(date.getHours() % 12 || 12, 2),
     m: date.getMinutes(),
