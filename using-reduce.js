@@ -13,7 +13,7 @@ function sumOrMul(array, opt) {
     opt = 0;
   }
   return array.reduce((accumulator, number) => {
-    return number % 2 === 0 ? accumulator * number : accumulator + number;
+    return number % 2 === 0 ? accumulator * number : accumulator + number; // si modulo 2 donc paire sinon impair
   }, opt);
 }
 
