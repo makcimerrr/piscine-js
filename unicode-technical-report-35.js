@@ -1,5 +1,5 @@
 function format(date, formatString) {
-  const months = [
+  const monthNamesShort = [
     "Jan",
     "Feb",
     "Mar",
@@ -12,6 +12,20 @@ function format(date, formatString) {
     "Oct",
     "Nov",
     "Dec",
+  ];
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -41,10 +55,10 @@ function format(date, formatString) {
     yyyy: getFullYearString(date.getFullYear()),
     G: date.getFullYear() >= 1 ? "AD" : "BC",
     GGGG: date.getFullYear() >= 1 ? "Anno Domini" : "Before Christ",
-    M: date.getMonth() + 1,
-    MM: padZero(date.getMonth() + 1, 2),
-    MMM: months[date.getMonth()],
-    MMMM: months[date.getMonth()],
+    M: (date.getMonth() + 1).toString(),
+    MM: (date.getMonth() + 1).toString().padStart(2, "0"),
+    MMM: monthNamesShort[date.getMonth()],
+    MMMM: monthNames[date.getMonth()],
     d: date.getDate(),
     dd: padZero(date.getDate(), 2),
     E: daysOfWeek[date.getDay()],
@@ -68,7 +82,7 @@ function format(date, formatString) {
 //EX
 const d2 = new Date("7 January 1985, 3:08:19");
 console.log(format(d2, "HH(mm)ss [dd] <MMM>")); // -> '03(08)19 [07] <Jan>'
-console.log(format(d2, "M"));
+console.log(format(d2, "MMMM"));
 
 const eclipse2 = new Date(-585, 4, 28);
 console.log(format(eclipse2, "yyyy"));
