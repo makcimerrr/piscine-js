@@ -19,7 +19,7 @@ function format(date, formatString) {
   const padZero = (num) => (num < 10 ? "0" : "") + num;
 
   const formatOptions = {
-    y: date.getFullYear(),
+    y: Math.abs(date.getFullYear()),
     yyyy: date.getFullYear(),
     G: "AD",
     GGGG: "Anno Domini",
@@ -46,3 +46,10 @@ function format(date, formatString) {
 
   return formatString.replace(regex, (match) => formatOptions[match]);
 }
+/*const d = new Date("7 January 1985, 3:08:19");
+
+console.log(format(d, "HH(mm)ss [dd] <MMM>")); // -> '03(08)19 [07] <Jan>'
+console.log(format(d, "M"));
+
+const eclipse = new Date(-585, 4, 28);
+console.log(format(eclipse, "y"));*/
