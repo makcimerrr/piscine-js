@@ -19,8 +19,8 @@ function some(array, callback) {
 function none(array, callback) {
   for (let i = 0; i < array.length; i++) {
     if (!callback(array[i])) {
-      return false;
+      return true;
     }
   }
-  return true;
+  return false;
 }
