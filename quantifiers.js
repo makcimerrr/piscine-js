@@ -1,6 +1,6 @@
 function every(array, callback) {
   for (let i = 0; i < array.length; i++) {
-    if (!callback(arr[i])) {
+    if (!callback(array[i])) {
       return false;
     }
   }
@@ -9,7 +9,7 @@ function every(array, callback) {
 
 function some(array, callback) {
   for (let i = 0; i < array.length; i++) {
-    if (callback(arr[i])) {
+    if (callback(array[i])) {
       return true;
     }
   }
@@ -17,10 +17,10 @@ function some(array, callback) {
 }
 
 function none(array, callback) {
-    for (let i = 0; i < array.length; i++) {
-      if (!callback(arr[i])) {
-        return false;
-      }
+  for (let i = 0; i < array.length; i++) {
+    if (!callback(array[i])) {
+      return false;
     }
-    return true;
   }
+  return true;
+}
