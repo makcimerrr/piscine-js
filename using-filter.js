@@ -52,21 +52,12 @@ console.log(filter1DistinctVowel(words));
 function multiFilter(objects) {
   const vowels = ["a", "e", "i", "o", "u"];
   return objects.filter((obj) => {
-    const isCapitalValid = obj.capital.length >= 8;
-    const startsWithVowel = !vowels.includes(obj.name.toLowerCase().charAt(0));
-    const hasVowelInTag = /[aeiou]/i.test(obj.tag);
-    const isRegionValid = obj.region !== "South";
+    const isCapitalValid = obj.capital.length >= 8; // Au moins 8 caractères
+    const startsWithVowel = !vowels.includes(obj.name.toLowerCase().charAt(0)); //Ne commence pas par une voyelle
+    const hasVowelInTag = /[aeiou]/i.test(obj.tag); // Regex : Match a single character present in the list below [aeiou]
+    // A au moins une voyelle
+    const isRegionValid = obj.region !== "South"; // Différent de South
 
     return isCapitalValid && startsWithVowel && hasVowelInTag && isRegionValid;
   });
 }
-
-const countries = [
-    { capital: 'Washington', name: 'USA', tag: 'Country', region: 'North' },
-    { capital: 'Paris', name: 'France', tag: 'European', region: 'West' },
-    { capital: 'Tokyo', name: 'Japan', tag: 'Asian', region: 'East' },
-    { capital: 'Cape Town', name: 'South Africa', tag: 'African', region: 'South' },
-  ];
-  
-  const filteredCountries = multiFilter(countries);
-  console.log(filteredCountries);
