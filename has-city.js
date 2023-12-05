@@ -11,7 +11,7 @@ function hasCity(country, array) {
   return checkCity;
 }
 
-isChinese = hasCity("China", [
+let isChinese = hasCity("China", [
   "Beijing",
   "Shanghai",
   "Wuhan",
