@@ -22,5 +22,5 @@ function none(array, callback) {
       return true;
     }
   }
-  return false;
+  return true;
 }
