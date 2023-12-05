@@ -7,7 +7,7 @@ function map(array, callback) {
   return resultArray;
 }
 
-function customFlatMap(arr, callback) {
+function flatMap(arr, callback) {
   const resultArray = [];
   for (let i = 0; i < arr.length; i++) {
     const result = callback(arr[i], i, arr);
