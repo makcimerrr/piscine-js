@@ -19,14 +19,14 @@ function reject(arr, callback) {
 }
 
 function partition(arr, callback) {
-  const matching = [];
-  const nonMatching = [];
+  const result = [];
+  const nonResult = [];
   for (let i = 0; i < arr.length; i++) {
     if (callback(arr[i], i, arr)) {
-      matching.push(arr[i]);
+      result.push(arr[i]);
     } else {
-      nonMatching.push(arr[i]);
+      nonResult.push(arr[i]);
     }
   }
-  return [matching, nonMatching];
+  return [result, nonResult];
 }
