@@ -35,8 +35,8 @@ export const getBonannoPisano = () => {
     element.classList.contains("active")
   );
 
-  const response = nonActiveClassicalArchitects.filter((element) =>
-    element.classList.contains("not(#BonannoPisano)")
+  const response = activeClassicalArchitects.filter(
+    (element) => element.id != "BonannoPisano"
   );
   return [result, response];
 };
