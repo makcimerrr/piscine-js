@@ -31,12 +31,12 @@ export const getBonannoPisano = () => {
   const classicalArchitects = Array.from(
     document.getElementsByClassName("classical")
   );
-  const nonActiveClassicalArchitects = classicalArchitects.filter(
-    (element) => !element.classList.contains("active")
+  const activeClassicalArchitects = classicalArchitects.filter((element) =>
+    element.classList.contains("active")
   );
 
   const response = nonActiveClassicalArchitects.filter((element) =>
-    element.classList.contains(":not(#BonannoPisano)")
+    element.classList.contains("not(#BonannoPisano)")
   );
   return [result, response];
 };
