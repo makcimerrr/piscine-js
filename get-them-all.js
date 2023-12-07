@@ -1,4 +1,4 @@
-export const getArchitects = () => {
+/*export const getArchitects = () => {
   const architectsArray = [];
   const nonArchitectsArray = [];
 
@@ -15,4 +15,10 @@ export const getArchitects = () => {
   }
 
   return [architectsArray, nonArchitectsArray];
+};*/
+
+export const getArchitects = () => {
+  const architects = Array.from(document.getElementsByTagName("a"));
+  const nonArchitects = Array.from(document.getElementsByTagName(":not(a)"));
+  return [architects, nonArchitects];
 };
