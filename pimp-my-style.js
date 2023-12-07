@@ -1,17 +1,15 @@
-import { styles } from "./pimp-my-style/pimp-my-style.data.js";
+import { styles } from "./pimp-my-style.data.js";
+var counter = 0;
 
 function pimp() {
-  var bouton = document.querySelector("button.button");
-  var i = 0;
-  if (i === styles.length) {
-    bouton.classList.toggle("unpimp");
-  }
+  var button = document.querySelector("button.button");
 
-  !bouton.classList.contains("unpimp")
-    ? bouton.classList.add(styles[i++])
-    : bouton.classList.remove(styles[i--]);
+  !button.classList.contains("unpimp")
+    ? button.classList.add(styles[counter++])
+    : button.classList.remove(styles[counter--]);
+  counter === 0 ? button.classList.toggle("unpimp") : null;
 
-  i === 0 ? bouton.classList.toggle("unpimp") : null;
+  counter === styles.length ? button.classList.toggle("unpimp") : null;
 }
 
 export { pimp };
