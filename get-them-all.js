@@ -5,11 +5,14 @@ export const getArchitects = () => {
 };
 
 export const getClassical = () => {
-  const classics = Array.from(document.getElementsByClassName("classical"));
-  const nonClassics = Array.from(
-    document.getElementsByClassName(":not(classical)")
+  const architects = Array.from(document.getElementsByTagName("a"));
+  const classicalArchitects = Array.from(
+    document.getElementsByClassName("classical")
   );
-  return [classics, nonClassics];
+  const nonClassicalArchitects = architects.filter(
+    (element) => !element.classList.contains("classical")
+  );
+  return [classicalArchitects, nonClassicalArchitects];
 };
 export const getActive = () => {
   const classicalArchitects = Array.from(
