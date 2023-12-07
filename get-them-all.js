@@ -1,6 +1,6 @@
 export const getArchitects = () => {
   const architects = Array.from(document.getElementsByTagName("a"));
-  const nonArchitects = Array.from(document.getElementsByTagName(":not(a)"));
+  const nonArchitects = Array.from(document.getElementsByTagName("span"));
   return [architects, nonArchitects];
 };
 
