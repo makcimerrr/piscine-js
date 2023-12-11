@@ -60,10 +60,3 @@ function cartTotal(cart) {
   }
   return result;
 }
-
-console.log("Total calories:");
-console.log(totalCalories(groceriesCart));
-console.log("Items with low carbs:");
-console.log(lowCarbs(groceriesCart));
-console.log("Total cart nutritional facts:");
-console.log(cartTotal(groceriesCart));
