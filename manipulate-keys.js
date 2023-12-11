@@ -17,16 +17,10 @@ function mapKeys(obj, transform) {
 
 function reduceKeys(obj, reducer, initialValue = "") {
   let acc = initialValue;
-  let isFirst = true;
 
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
-      if (isFirst) {
-        acc += key;
-        isFirst = false;
-      } else {
-        acc = reducer(acc, key);
-      }
+      acc = reducer(acc, key);
     }
   }
 
