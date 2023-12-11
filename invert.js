@@ -1,12 +1,11 @@
 function invert(obj) {
-  const inverted = {};
-  const keys = Object.getOwnPropertyNames(obj);
-
-  for (let i = 0; i < keys.length; i++) {
-    inverted[keys[i]] = 1 / obj[keys[i]];
+  const newObj = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      newObj[obj[key]] = key;
+    }
   }
-
-  return inverted;
+  return newObj;
 }
 
 var student = {
@@ -18,3 +17,4 @@ var student = {
 
 console.log(invert(student));
 console.log(invert({ f: 5, __proto__: { d: 6 } }));
+console.log(invert({ language: "english" }), { english: "language" });
