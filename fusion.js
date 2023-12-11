@@ -14,7 +14,7 @@ function fusion(obj1, obj2) {
         result[key] = obj2[key]; // Type mismatch, take value from obj2
       }
     } else {
-      result[key] = obj1[key];
+      result[key] = obj1[key]; // Type not found obj, create one
     }
   }
 
