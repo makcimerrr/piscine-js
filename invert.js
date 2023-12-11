@@ -13,4 +13,4 @@ var student = {
   fees: 5000,
 };
 
-console.log(inverse(student));
+console.log(invert(student));
