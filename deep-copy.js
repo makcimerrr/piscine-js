@@ -1,5 +1,15 @@
 function deepCopy(input) {
   var output;
+
+  function isAnObject(input) {
+    return (
+      typeof input === "object" &&
+      !(typeof input === "function") &&
+      !Array.isArray(input) &&
+      input !== null &&
+      !(input instanceof RegExp)
+    );
+  }
   switch (true) {
     case Array.isArray(input):
       output = [];
@@ -7,7 +17,7 @@ function deepCopy(input) {
         output[i] = deepCopy(input[i]);
       }
       break;
-    case isDefenitelyAnObject(input):
+    case isAnObject(input):
       output = {};
       for (var key in input) {
         output[key] = deepCopy(input[key]);
@@ -17,14 +27,4 @@ function deepCopy(input) {
       output = input;
   }
   return output;
-}
-
-function isDefenitelyAnObject(input) {
-  return (
-    typeof input === "object" &&
-    !(typeof input === "function") &&
-    !Array.isArray(input) &&
-    input !== null &&
-    !(input instanceof RegExp)
-  );
 }
