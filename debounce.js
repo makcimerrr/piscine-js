@@ -1,44 +1,25 @@
-// A debounce function is used to delay the execution of a function until a certain time period has passed.
-// This can be useful for reducing the number of times a function is executed, particularly in situations where it might be costly or not desirable to execute it multiple times in a short period.
+/**
+ * This function is used to debounce other functions. It returns a new function that can be used as a debounced version of the original function.
+ * The new function will not execute until a specified delay has passed since the last time it was called.
+ * This is useful in situations where a function is repeatedly called very frequently, such as when an event handler is attached to a scrolling element.
+ * Debouncing can help reduce the number of times the function is executed, which can improve performance and make the code more efficient.
+ *
+ * @param {Function} func - The function to be debounced.
+ * @param {number} delay - The delay, in milliseconds, after the last function call during which the debounced function should not be executed.
+ * @returns {Function} - The debounced function.
+ */
+function debounce(func, wait = 0) {
+  let timer;
 
-// This is the basic debounce function.
-// It takes a function (func), a time delay (wait), and an options object (options) as arguments.
-// The options object can contain a leading property that, if true, will execute the function immediately the first time it is called and then wait for the delay before executing again.
-function debounce(func, wait = 0, options = {}) {
-  let timeout;
-  let isImmediate = false;
+  // The returned function will act as a debounced version of the original function.
+  return function (...args) {
+    // Clear the timer, if it exists.
+    clearTimeout(timer);
 
-  // If the options object has a leading property and it is true, then set isImmediate to true.
-  if (options.leading) {
-    isImmediate = true;
-  }
-
-  // Return a new function that can be used as a debounced version of the original function.
-  return function () {
-    const args = arguments;
-
-    // Define a function that will be called later.
-    // This function will reset the timeout and execute the original function if necessary.
-    const later = function () {
-      timeout = null;
-      if (!isImmediate) {
-        func.apply(this, args);
-      }
-    };
-
-    // Determine if the function should be called immediately.
-    const callNow = isImmediate && !timeout;
-
-    // Clear the timeout.
-    clearTimeout(timeout);
-
-    // If the function should be called immediately, then execute it.
-    // Otherwise, set a new timeout to call the later function.
-    if (callNow) {
-      func.apply(this, args);
-    } else {
-      timeout = setTimeout(later, wait);
-    }
+    // Set a new timer to call the original function after the specified delay.
+    timer = setTimeout(() => {
+      func(...args);
+    }, wait);
   };
 }
 
