@@ -15,15 +15,14 @@ function debounce(func, wait = 0, options = {}) {
 
   // Return a new function that can be used as a debounced version of the original function.
   return function () {
-    const context = this;
     const args = arguments;
 
     // Define a function that will be called later.
     // This function will reset the timeout and execute the original function if necessary.
-    const later = function (...args) {
+    const later = function () {
       timeout = null;
       if (!isImmediate) {
-        func.apply(...args);
+        func.apply(this, args);
       }
     };
 
@@ -36,7 +35,7 @@ function debounce(func, wait = 0, options = {}) {
     // If the function should be called immediately, then execute it.
     // Otherwise, set a new timeout to call the later function.
     if (callNow) {
-      func.apply(context, args);
+      func.apply(this, args);
     } else {
       timeout = setTimeout(later, wait);
     }
