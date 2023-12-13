@@ -14,8 +14,9 @@ function debounce(func, wait) {
   };
 }
 
-function debounce(func, wait, options = { leading: false }) {
+function opDebounce(func, wait, options = {}) {
   let timeout;
+  let leadingExecuted = false;
 
   return function (...args) {
     const context = this;
@@ -23,16 +24,22 @@ function debounce(func, wait, options = { leading: false }) {
     const execute = function () {
       timeout = null;
       func.apply(context, args);
+      leadingExecuted = true;
     };
 
-    const shouldExecute = options.leading && !timeout;
+    const shouldExecute = !timeout;
 
     clearTimeout(timeout);
 
-    timeout = setTimeout(execute, wait);
-
-    if (shouldExecute) {
-      func.apply(context, args);
+    if (options.leading && shouldExecute && !leadingExecuted) {
+      execute();
     }
+
+    timeout = setTimeout(() => {
+      if (!options.leading || (options.trailing && shouldExecute)) {
+        execute();
+      }
+      leadingExecuted = false;
+    }, wait);
   };
 }
