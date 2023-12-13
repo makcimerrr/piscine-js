@@ -36,23 +36,19 @@ function opDebounce(func, wait = 0, options = {}) {
     isImmediate = true;
   }
 
-  return function (...args) {
+  return function () {
     const context = this;
+    const args = arguments;
 
-    const later = function () {
+    if (options.leading && !timeout) {
+      func(context, args);
+    }
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
       timeout = null;
       if (!isImmediate) {
-        func.apply(context, args);
+        func(context, args);
       }
-    };
-
-    const callNow = isImmediate && !timeout;
-
-    clearTimeout(timeout);
-    if (callNow) {
-      func.apply(context, args);
-    } else {
-      timeout = setTimeout(later, wait);
-    }
+    }, wait);
   };
 }
