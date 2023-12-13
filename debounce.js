@@ -35,11 +35,16 @@ function opDebounce(func, wait, options = {}) {
       execute();
     }
 
-    timeout = setTimeout(() => {
-      if (!options.leading || (options.trailing && shouldExecute)) {
-        execute();
-      }
-      leadingExecuted = false;
-    }, wait);
+    timeout = setTimeout(
+      () => {
+        if (!options.leading || (options.trailing && shouldExecute)) {
+          execute();
+        }
+        leadingExecuted = false;
+      },
+      options.maxWait ? Math.min(wait, options.maxWait) : wait
+    );
   };
 }
+
+console.log(opDebounce(add, 200, { leading: true }), { delay: 70, count: 3 });
