@@ -14,7 +14,7 @@ function debounce(func, wait) {
   };
 }
 
-function opDebounce(func, wait) {
+function debounce(func, wait, options = { leading: false }) {
   let timeout;
 
   return function (...args) {
@@ -25,7 +25,7 @@ function opDebounce(func, wait) {
       func.apply(context, args);
     };
 
-    const shouldExecute = !timeout;
+    const shouldExecute = options.leading && !timeout;
 
     clearTimeout(timeout);
 
