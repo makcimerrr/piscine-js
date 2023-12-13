@@ -30,6 +30,12 @@ function debounce(func, wait = 0, options = {}) {
 
 function opDebounce(func, delay, options = {}) {
   let timeout;
+  let isImmediate = false;
+
+  if (options.leading) {
+    isImmediate = true;
+  }
+
   return function (...args) {
     if (options.leading && !timeout) {
       func(...args);
@@ -37,7 +43,7 @@ function opDebounce(func, delay, options = {}) {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       timeout = null;
-      if (!options.leading) {
+      if (!isImmediate) {
         func(...args);
       }
     }, delay);
