@@ -1,48 +1,59 @@
-function debounce(func, wait) {
+function debounce(func, wait = 0, options = {}) {
   let timeout;
+  let isImmediate = false;
 
-  return function (...args) {
+  if (options.leading) {
+    isImmediate = true;
+  }
+
+  return function () {
     const context = this;
+    const args = arguments;
 
     const later = function () {
       timeout = null;
-      func.apply(context, args);
+      if (!isImmediate) {
+        func.apply(context, args);
+      }
     };
 
+    const callNow = isImmediate && !timeout;
+
     clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    if (callNow) {
+      func.apply(context, args);
+    } else {
+      timeout = setTimeout(later, wait);
+    }
   };
 }
 
-function opDebounce(func, wait, options = {}) {
+function opDebounce(func, wait = 0, options = {}) {
   let timeout;
-  let leadingExecuted = false;
+  let isImmediate = false;
 
-  return function (...args) {
+  if (options.leading) {
+    isImmediate = true;
+  }
+
+  return function () {
     const context = this;
+    const args = arguments;
 
-    const execute = function () {
+    const later = function () {
       timeout = null;
-      func.apply(context, args);
-      leadingExecuted = true;
+      if (!isImmediate) {
+        func.apply(context, args);
+      }
     };
 
-    const shouldExecute = !timeout;
+    const callNow = isImmediate && !timeout;
 
     clearTimeout(timeout);
-
-    if (options.leading && shouldExecute && !leadingExecuted) {
-      execute();
+    if (callNow) {
+      func.apply(context, args);
+    } else {
+      timeout = setTimeout(later, wait);
     }
-
-    timeout = setTimeout(
-      () => {
-        if (!options.leading || (options.trailing && shouldExecute)) {
-          execute();
-        }
-        leadingExecuted = false;
-      },
-      options.maxWait ? Math.min(wait, options.maxWait) : wait
-    );
   };
 }
