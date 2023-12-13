@@ -36,9 +36,8 @@ function opDebounce(func, wait = 0, options = {}) {
     isImmediate = true;
   }
 
-  return function () {
+  return function (...args) {
     const context = this;
-    const args = arguments;
 
     const later = function () {
       timeout = null;
