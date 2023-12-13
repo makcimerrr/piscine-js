@@ -46,5 +46,3 @@ function opDebounce(func, wait, options = {}) {
     );
   };
 }
-
-console.log(opDebounce(add, 200, { leading: true }), { delay: 70, count: 3 });
