@@ -40,7 +40,6 @@ function pronoun(inputString) {
   return pronounMap;
 }
 
-// Exemple d'utilisation :
 const example1 =
   "Using Array Destructuring, you you can iterate through objects easily.";
 const result1 = pronoun(example1);
@@ -49,3 +48,5 @@ console.log(result1);
 const example2 = "If he you want to buy something you have to pay.";
 const result2 = pronoun(example2);
 console.log(result2);
+
+console.log(pronoun(`it i it she is gone`));
