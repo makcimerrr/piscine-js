@@ -28,7 +28,7 @@ function debounce(func, wait = 0, options = {}) {
   };
 }
 
-function opDebounce(func, delay, options = {}) {
+function opDebounce(func, wait = 0, options = {}) {
   let timeout;
   let isImmediate = false;
 
@@ -36,16 +36,24 @@ function opDebounce(func, delay, options = {}) {
     isImmediate = true;
   }
 
-  return function (...args) {
-    if (options.leading && !timeout) {
-      func(...args);
-    }
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
+  return function () {
+    const context = this;
+    const args = arguments;
+
+    const later = function () {
       timeout = null;
       if (!isImmediate) {
-        func(...args);
+        func.apply(context, args);
       }
-    }, delay);
+    };
+
+    const callNow = isImmediate && !timeout;
+
+    clearTimeout(timeout);
+    if (callNow) {
+      func.apply(context, args);
+    } else {
+      timeout = setTimeout(later, wait);
+    }
   };
 }
