@@ -12,6 +12,24 @@ function retry(count, callback) {
   };
 }
 
+function timeout(delay, callback) {
+  return async function (...args) {
+    const maPromesse = new Promise((resolve, reject) =>
+      setTimeout(resolve, delay, (reject = Error("timeout")))
+    );
+    const func = new Promise((resolve) => resolve(callback(...args)));
+
+    try {
+      const result = await Promise.race([maPromesse, func]).then(
+        (result) => result
+      );
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  };
+}
+
 /*const setup = {
   r: Math.random().toString(36).slice(2),
   failNTimes:
@@ -23,5 +41,6 @@ function retry(count, callback) {
     (...v) =>
       new Promise((s) => setTimeout(s, delay, v)),
 };
+console.log(await retry(0, setup.failNTimes(0))(setup.r));
 
-console.log(retry(0, setup.failNTimes(0))(setup.r));*/
+console.log(await timeout(0, setup.delayed(0))(setup.r));*/
