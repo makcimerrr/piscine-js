@@ -12,7 +12,11 @@ function pronoun(inputString) {
     };
 
     for (const match of matches) {
-      pronounMap[pronoun].word.push(match[1]);
+      let followingWord = match[1].toLowerCase();
+
+      pronouns.includes(followingWord) ? (followingWord = "") : null;
+
+      pronounMap[pronoun].word.push(followingWord);
       pronounMap[pronoun].count++;
     }
   });
@@ -36,3 +40,7 @@ console.log(result1);
 const example2 = "If he you want to buy something you have to pay.";
 const result2 = pronoun(example2);
 console.log(result2);
+
+const example3 = "it i it she is gone";
+const result3 = pronoun(example3);
+console.log(result3);
