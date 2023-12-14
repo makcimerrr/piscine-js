@@ -14,9 +14,13 @@ function retry(count, callback) {
 
 function timeout(delay, callback) {
   return async function (...args) {
-    const maPromesse = new Promise((resolve, reject) =>
-      setTimeout(resolve, delay, Error("timeout"))
-    );
+    let timer;
+    const maPromesse = new Promise((resolve, reject) => {
+      timer = setTimeout(() => {
+        clearTimeout(timer);
+        reject(new Error("timeout"));
+      }, delay);
+    });
     const func = new Promise((resolve) => resolve(callback(...args)));
 
     try {
