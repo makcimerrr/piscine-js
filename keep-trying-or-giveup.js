@@ -12,7 +12,7 @@ function retry(count, callback) {
   };
 }
 
-const setup = {
+/*const setup = {
   r: Math.random().toString(36).slice(2),
   failNTimes:
     (n) =>
@@ -24,4 +24,4 @@ const setup = {
       new Promise((s) => setTimeout(s, delay, v)),
 };
 
-console.log(retry(0, setup.failNTimes(0))(setup.r));
+console.log(retry(0, setup.failNTimes(0))(setup.r));*/
