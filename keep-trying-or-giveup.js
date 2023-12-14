@@ -29,8 +29,14 @@ function timeout(delay, callback) {
     }
   };
 }
+/*
+const fail = (q) =>
+  q.then(
+    (v) => Promise.reject("should fail"),
+    (e) => e.message
+  );
 
-/*const setup = {
+const setup = {
   r: Math.random().toString(36).slice(2),
   failNTimes:
     (n) =>
@@ -43,4 +49,7 @@ function timeout(delay, callback) {
 };
 console.log(await retry(0, setup.failNTimes(0))(setup.r));
 
-console.log(await timeout(0, setup.delayed(0))(setup.r));*/
+console.log(await timeout(0, setup.delayed(0))(setup.r));
+
+console.log(await fail(timeout(2, setup.delayed(4))(setup.r)), "timeout");
+*/
