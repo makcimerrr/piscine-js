@@ -17,6 +17,6 @@ async function getJSON(path, params) {
     }
     return json.data;
   } catch (error) {
-    throw error;
+    throw new Error(`${error.message}`);
   }
 }
