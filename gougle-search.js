@@ -28,11 +28,6 @@ async function gougleSearch(query) {
       video: videoResult,
     };
   } catch (error) {
-    return Error("timeout");
+    throw error;
   }
 }
-
-// Example usage
-gougleSearch("hello+world")
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));
