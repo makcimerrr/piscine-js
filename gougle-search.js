@@ -1,28 +1,27 @@
-// fake `getJSON` function
-/*let getJSON = async (url) => url;*/
-
 async function queryServers(serverName, q) {
-  const url = "/" + serverName + "?q=" + q;
-  const urlBackup = "/" + serverName + "_backup?q=" + q;
+  const url = `/${serverName}?q=${q}`;
+  const urlBackup = `/${serverName}_backup?q=${q}`;
   const basicUrl = getJSON(url);
   const backupUrl = getJSON(urlBackup);
   const fastestResponse = await Promise.race([basicUrl, backupUrl]);
   return fastestResponse;
 }
 
-async function gougleSearch(query) {
+async function gougleSearch(q) {
+  const servers = ["web", "image", "video"];
+  const promises = servers.map((server) => queryServers(server, q));
   try {
-    const [webResult, imageResult, videoResult] = await Promise.all([
-      queryServers("web", query),
-      queryServers("image", query),
-      queryServers("video", query),
+    const results = await Promise.race([
+      Promise.all(promises),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("timeout")), 80)
+      ),
     ]);
-
-    return {
-      web: webResult,
-      image: imageResult,
-      video: videoResult,
-    };
+    const resultObject = {};
+    servers.forEach((server, index) => {
+      resultObject[server] = results[index];
+    });
+    return resultObject;
   } catch (error) {
     throw error;
   }
