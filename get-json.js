@@ -13,7 +13,7 @@ async function getJSON(path, params) {
 
     //Contient error ?
     if (json.error) {
-      throw new Error(json.Error);
+      throw new Error(json.error);
     }
     return json.data;
   } catch (error) {
