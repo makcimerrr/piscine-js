@@ -2,7 +2,7 @@ function all(promisesObject) {
   const keys = Object.keys(promisesObject);
   const results = {};
 
-  function* resolveSequentially(index) {
+  function resolveSequentially(index) {
     if (index === keys.length) {
       // Toutes les promesses ont été résolues, retourner les résultats
       return results;
