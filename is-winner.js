@@ -26,7 +26,7 @@ const isWinner = async (countryName) => {
   }
 };
 
-const db = (() => {
+/*const db = (() => {
   //countries that won the FIFA World Cup
   const countries = [
     { id: 1, name: "Brazil", continent: "South America" },
@@ -85,3 +85,4 @@ const db = (() => {
 // Example usage:
 console.log(isWinner("Brazil").then(console.log).catch(console.error));
 console.log(isWinner("Colombia").then(console.log).catch(console.error));
+*/
