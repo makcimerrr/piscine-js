@@ -1,17 +1,13 @@
 // fake `getJSON` function
 /*let getJSON = async (url) => url;*/
 
-function queryServers(serverName, q) {
-  const url1 = `/${serverName}?q=${q}`;
-  const url2 = `/${serverName}_backup?q=${q}`;
-
-  return Promise.race([
-    getJSON(url1),
-    getJSON(url2),
-    new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("timeout")), 80)
-    ),
-  ]);
+async function queryServers(serverName, q) {
+  const url = "/" + serverName + "?q=" + q;
+  const urlBackup = "/" + serverName + "_backup?q=" + q;
+  const basicUrl = getJSON(url);
+  const backupUrl = getJSON(urlBackup);
+  const fastestResponse = await Promise.race([basicUrl, backupUrl]);
+  return fastestResponse;
 }
 
 async function gougleSearch(query) {
