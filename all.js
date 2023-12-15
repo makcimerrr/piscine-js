@@ -1,39 +1,37 @@
-function all(promisesObject) {
-  const keys = Object.keys(promisesObject);
-  const results = {};
+function all(object) {
+  // Convert object to an array of key-value pairs
+  const entries = Object.entries(object);
 
-  function resolveSequentially(index) {
-    if (index === keys.length) {
-      // Toutes les promesses ont été résolues, retourner les résultats
-      return results;
-    }
+  // Initialize an empty object to store the resolved values
+  const resolvedValues = {};
 
-    const key = keys[index];
-    const promise = promisesObject[key];
+  // Create a promise that resolves when all values are resolved
+  const promise = entries.reduce((accumulator, [key, value]) => {
+    // Use the resolved value in the final object
+    return accumulator.then(() => {
+      // Return a new promise that resolves the value and updates the resolvedValues object
+      return Promise.resolve(value).then((resolvedValue) => {
+        resolvedValues[key] = resolvedValue;
+      });
+    });
+  }, Promise.resolve());
 
-    // Attendre la résolution de la promesse actuelle
-    results[key] = yield promise;
-
-    // Passer à la promesse suivante de manière récursive
-    yield* resolveSequentially(index + 1);
-  }
-
-  // Créer un générateur initial
-  const generator = resolveSequentially(0);
-
-  // Fonction pour traiter les étapes du générateur
-  function handleNext(value) {
-    const next = generator.next(value);
-
-    if (!next.done) {
-      // Si le générateur n'est pas terminé, résoudre la prochaine promesse
-      next.value.then(handleNext);
-    }
-  }
-
-  // Démarrer la résolution séquentielle avec la première promesse
-  handleNext();
-
-  // Retourner une promesse résolue, car nous n'avons pas le droit d'utiliser Promise.then
-  return Promise.resolve(generator);
+  // Return a new promise that resolves with the final resolvedValues object
+  return promise.then(() => resolvedValues);
 }
+
+// Example usage:
+const promisesObject = {
+  key1: Promise.resolve("value1"),
+  key2: Promise.resolve("value2"),
+  key3: Promise.resolve("value3"),
+};
+
+all(promisesObject)
+  .then((resolvedValues) => {
+    console.log(resolvedValues);
+    // Output: { key1: 'value1', key2: 'value2', key3: 'value3' }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
