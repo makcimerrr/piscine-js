@@ -22,11 +22,11 @@ const isWinner = async (countryName) => {
 
     return `${country.name} won the FIFA World Cup in ${formattedResults} winning by ${formattedResults}`;
   } catch (error) {
-    return error.message;
+    return `${countryName} never was a winner`;
   }
 };
 
-/*const db = (() => {
+const db = (() => {
   //countries that won the FIFA World Cup
   const countries = [
     { id: 1, name: "Brazil", continent: "South America" },
@@ -84,4 +84,4 @@ const isWinner = async (countryName) => {
 
 // Example usage:
 console.log(isWinner("Brazil").then(console.log).catch(console.error));
-*/
+console.log(isWinner("Colombia").then(console.log).catch(console.error));
