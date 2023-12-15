@@ -1,4 +1,4 @@
-function all(object) {
+async function all(object) {
   const entries = Object.entries(object);
 
   const resolvedValues = {};
