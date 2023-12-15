@@ -1,12 +1,6 @@
-function getURL(path, params) {
-  const url = new URLSearchParams(params);
-  const validUrl = path + "?" + url.toString();
-  return validUrl;
-}
-
 async function getJSON(path, params) {
   try {
-    const url = getURL(path, params);
+    const url = path + "?" + new URLSearchParams(params).toString();
 
     const response = await fetch(url);
 
@@ -29,23 +23,3 @@ async function getJSON(path, params) {
     throw error;
   }
 }
-
-const fakeFetch = async ({ data, error, ...opts } = {}) => ({
-  ok: !opts.status,
-  type: "basic",
-  status: 200,
-  statusText: "OK",
-  json: async () => ({ data, error }),
-  text: async () => JSON.stringify({ data, error }),
-  ...opts,
-});
-
-const t = async ({ eq }) => {
-  // check url parsing
-  let url;
-  fetch = async (arg) => fakeFetch({ url: (url = arg) });
-  const pending = await getJSON("/test", { query: "hello world", b: 5 });
-  return eq(url, "/test?query=hello+world&b=5");
-};
-
-console.log(t);
