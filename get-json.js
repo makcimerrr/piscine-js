@@ -6,19 +6,16 @@ async function getJSON(path, params) {
 
     // Vérifier si la réponse est OK
     if (!response.ok) {
-      throw new Error(`Erreur: ${response.statusText}`);
+      throw new Error(response.statusText);
     }
 
     const json = await response.json();
 
-    //Contient data ou error ?
-    if (json.hasOwnProperty("data")) {
-      return json.data;
-    } else if (json.hasOwnProperty("error")) {
-      throw new Error(`Error: ${json.error}`);
-    } else {
-      throw new Error("Error");
+    //Contient error ?
+    if (json.error) {
+      throw new Error(json.Error);
     }
+    return json.data;
   } catch (error) {
     throw error;
   }
