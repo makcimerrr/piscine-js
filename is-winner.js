@@ -17,16 +17,19 @@ const isWinner = async (countryName) => {
     }
 
     const formattedResults = results
-      .map((result) => `${result.year}: ${result.score}`)
+      .map((result) => `${result.year}`)
+      .join(", ");
+    const formattedScores = results
+      .map((result) => `${result.score}`)
       .join(", ");
 
-    return `${country.name} won the FIFA World Cup in ${formattedResults} winning by ${formattedResults}`;
+    return `${country.name} won the FIFA World Cup in ${formattedResults} winning by ${formattedScores}`;
   } catch (error) {
     return `${countryName} never was a winner`;
   }
 };
-
-/*const db = (() => {
+/*
+const db = (() => {
   //countries that won the FIFA World Cup
   const countries = [
     { id: 1, name: "Brazil", continent: "South America" },
@@ -83,6 +86,7 @@ const isWinner = async (countryName) => {
 })();
 
 // Example usage:
-console.log(isWinner("Brazil").then(console.log).catch(console.error));
-console.log(isWinner("Colombia").then(console.log).catch(console.error));
+console.log(await isWinner("Brazil"));
+console.log(await isWinner("Colombia"));
+console.log(await isWinner("Germany"));
 */
