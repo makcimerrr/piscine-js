@@ -6,32 +6,32 @@ function race(promises) {
   });
 }
 
-async function some(promises, count) {
-  if (promises.length === 0 || count === 0) {
-    return [];
-  }
+function some(promises, count) {
+  return new Promise(async (resolve, reject) => {
+    const results = [];
+    let resolvedCount = 0;
 
-  let resolvedCount = 0;
-  const resolvedValues = [];
-  for (const promise of promises) {
-    try {
-      const result = await Promise.resolve(promise);
-      resolvedValues.push(result);
-      resolvedCount++;
+    function handlePromise(promise, index) {
+      Promise.resolve(promise)
+        .then((value) => {
+          results[index] = value;
+          resolvedCount++;
 
-      if (resolvedCount === count) {
-        return resolvedValues;
-      }
-    } catch (error) {
-      resolvedCount++;
-
-      if (resolvedCount === count) {
-        return resolvedValues;
-      }
+          resolvedCount === count
+            ? resolve(results.filter((x) => x !== false))
+            : null;
+        })
+        .catch((error) => {
+          reject({ index, error });
+        });
     }
-  }
 
-  return resolvedValues;
+    count === 0 || promises.length === 0
+      ? resolve([])
+      : promises.forEach((promise, index) => {
+          handlePromise(promise, index);
+        });
+  });
 }
 
 // Example usage:
