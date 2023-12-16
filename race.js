@@ -1,13 +1,7 @@
 function race(promises) {
   return new Promise((resolve, reject) => {
     promises.forEach((promise) => {
-      Promise.resolve(promise)
-        .then((result) => {
-          resolve(result);
-        })
-        .catch((error) => {
-          reject(error);
-        });
+      Promise.resolve(promise).then(resolve, reject);
     });
   });
 }
